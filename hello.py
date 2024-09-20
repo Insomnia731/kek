@@ -1,4 +1,4 @@
-from lxml import html
+# from lxml import html
 import random, requests, time#, subprocess
 
 
