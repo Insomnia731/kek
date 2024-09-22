@@ -16,7 +16,7 @@ jobs:
           python-version: '3.x'
 
       - name: Upgrade pip and install requests
-        run:
+        run: |
           python -m pip install --upgrade pip
           python -m pip install requests
 
