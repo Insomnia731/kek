@@ -7,21 +7,21 @@ import aiohttp
 
 async def get_ip_info():
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://ipinfo.io") as response:
-                if response.status == 200:
-                    data = await response.json()
-                    
-                    ip = data.get('ip')
-                    city = data.get('city')
-                    country = data.get('country')
-                    
-                    print(f"IP: {ip}")
-                    print(f"Location: {city}, {country}")
-                else:
-                    # Получаем текст ошибки, если не 200
-                    error_text = await response.text()
-                    print(f"Error: {response.status}, {error_text}")
+        async with session.get("https://ipinfo.io") as response:
+            print(f"Response status: {response.status}")
+            content_type = response.headers.get('Content-Type')
+            print(f"Content-Type: {content_type}")
+
+            if response.status == 200 and 'application/json' in content_type:
+                data = await response.json()
+                ip = data.get('ip')
+                city = data.get('city')
+                country = data.get('country')
+                print(f"IP: {ip}")
+                print(f"Location: {city}, {country}")
+            else:
+                error_text = await response.text()
+                print(f"Error: {response.status}, {error_text}")
     except Exception as e:
         print(f"Error: {e}")
 
