@@ -24,4 +24,8 @@ jobs:
           python -m pip install requests
 
       - name: Run hello.py
-        run: python hello.py
+        #run: python hello.py
+        run: python start_main.py
+
+
+
