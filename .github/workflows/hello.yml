@@ -1,6 +1,9 @@
 name: Hello World Action
 
-on: [push]
+#on: [push]
+on:
+  push:  # Этот триггер остается, запускается на push
+  workflow_dispatch:  # Добавляем поддержку ручного запуска через API
 
 jobs:
   build:
